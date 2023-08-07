@@ -50,6 +50,26 @@
 7. all: 扫描整个表进行匹配, 即扫描聚簇索引树 (需优化, 添加索引优化)
 8. NULL: MySQL在优化过程中分解语句就已经可以获取到结果, 执行时甚至不用访问表或索引 (一般使用了聚合函数)
 
+黑马:
+
+NULL > system > const > eq_ref > red > range > index > all
+
+system: 查询系统中的表
+
+const: 根据主键查询
+
+eq_ref: 主键索引查询或唯一索引查询
+
+ref: 索引查询
+
+range: 范围查询, **一般最低也要优化到range**
+
+index: 索引树扫描
+
+all: 全盘扫描
+
+
+
 ## key_len
 
 联合索引 计算规则:
